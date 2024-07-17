@@ -1,7 +1,7 @@
 import Cliente from "../entity/Cliente.js";
 
 export default class ClienteService{
-    clientes: any[];
+    clientes: Cliente[];
     
     constructor(){
         this.clientes = [];
