@@ -3,7 +3,7 @@ import Demanda from "../entity/Demanda.js"
 import Desenvolvedor from "../entity/Desenvolvedor.js";
 
 export default class DemandaService{
-    demandas: any[];
+    demandas: Demanda[];
 
     constructor(){
         this.demandas = []
