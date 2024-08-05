@@ -1,4 +1,4 @@
-export default class Usuario {
+export default abstract class Usuario {
     private matricula: number;
     private nome: string;
     private email: string;
@@ -12,7 +12,7 @@ export default class Usuario {
         this.email = email;
         this.gestor  = gestor;
         this.ativo = true;
-        this.senha = senha
+        this.senha = senha;
     }
 
     get getMatricula(){
@@ -60,6 +60,6 @@ export default class Usuario {
     }
 
     toString(){
-        return `${this.matricula}, ${this.nome}, ${this.email}, ${this.gestor}, ${this.ativo}, ${this.senha}`
+        return `${this.matricula}, ${this.nome}, ${this.email}, ${this.gestor}, ${this.ativo}, ${this.senha}`;
     }
 }

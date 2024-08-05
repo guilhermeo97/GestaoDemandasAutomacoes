@@ -1,7 +1,7 @@
-import Cliente from "../entity/Cliente.js";
+import Cliente from "../entity/Cliente.ts";
 
 export default class ClienteService{
-    clientes: Cliente[];
+    clientes: Cliente[] = [];
     
     constructor(){
         this.clientes = [];
@@ -10,20 +10,23 @@ export default class ClienteService{
     criarCliente(matricula: number, nome: string, email: string, gestor: string, senha: string){
         let cliente = new Cliente(matricula, nome, email, gestor, senha);
         this.clientes.push(cliente);
-        return 'Usuário cliente criado'
+        return 'Usuário cliente criado';
     }
 
-    listarClientes(){
-        this.clientes.forEach(cliente => {
-            console.log(cliente.toString());
-        })
+    listarClientes(): Cliente[]{
+        return this.clientes;
     }
-
-    listarCliente(matCliente: number){
-        this.clientes.forEach(cliente => {
-            if(cliente.matricula === matCliente){
-                console.log(cliente.toString());
-            }
-        })
-    }
+  
+      listarCliente(matricula: number): Cliente | undefined{
+        return this.clientes.find(cliente => cliente.getMatricula === matricula); 
+      }
+      
+      inativarCliente(matCliente: number){
+        const cliente = this.listarCliente(matCliente);
+        if(cliente != undefined){
+            cliente.inativar();
+            return 'Perfil de Cliente desativado'
+        }
+          return 'Não conseguimos desativar o usuário' 
+      }
 }

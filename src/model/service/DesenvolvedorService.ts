@@ -1,10 +1,12 @@
-import Desenvolvedor from "../entity/Desenvolvedor.js";
+import Desenvolvedor from "../entity/Desenvolvedor.ts";
 
 export default class DesenvolvedorService{
-    private desenvolvedores: Desenvolvedor[] = [];
-    constructor() {
-        this.desenvolvedores = [];
-    }
+  
+  desenvolvedores: Desenvolvedor[] = [];
+  
+  constructor() {
+    this.desenvolvedores = [];
+  }
 
     criarDesenvolvedor(
       matricula: number,
@@ -20,16 +22,10 @@ export default class DesenvolvedorService{
 
     listarDesenvolvedores(): Desenvolvedor[]{
       return this.desenvolvedores;
-      // this.desenvolvedores.forEach(desenvolvedor => {
-      //   console.log(desenvolvedor.toString());
-      // });
     }
 
-    listarDesenvolvedor(matricula: number){
-      return this.desenvolvedores.find(desenvolvedor => desenvolvedor.getMatricula === matricula);
-      // this.desenvolvedores.forEach(desenvolvedor => {
-      //   return desenvolvedor.getMatricula === matricula
-      // }) 
+    public listarDesenvolvedor(matricula: number): Desenvolvedor | undefined{
+      return this.desenvolvedores.find(desenvolvedor => desenvolvedor.getMatricula === matricula); 
     }
     
     inativarDesenvolvedor(matDev: number){
